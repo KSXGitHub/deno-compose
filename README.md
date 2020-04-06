@@ -82,9 +82,41 @@ is equivalent to
 const fn = (...args) => f3(f2(f1(f0(...args))))
 ```
 
+#### `pipelineUnary`
+
+**Signature:** `pipeline (...functions) → function`
+
+```typescript
+const fn = pipe(f0, f1, f2, f3)
+```
+
+is equivalent to
+
+```typescript
+const fn = x => f3(f2(f1(f0(x))))
+```
+
+#### `composeUnary`
+
+**Signature:** `compose (...functions) → function`
+
+```typescript
+const fn = compose(f3, f2, f1, f0)
+```
+
+is equivalent to
+
+```typescript
+const fn = x => f3(f2(f1(f0(x))))
+```
+
 #### `composeRight`
 
 It is just an alias of [`pipeline`](#pipeline)
+
+#### `composeUnaryRight`
+
+It is just an alias of [`pipelineUnary`](#pipelineunary)
 
 ### Example
 
