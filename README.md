@@ -12,9 +12,9 @@ This package not only provides simple `pipe`, `pipeline`, and `compose` implemen
 
 **URLs to import from:** _(replace `:VERSION` with suitable version, which are git tags)_
 
-* GitHub User Content: https://raw.githubusercontent.com/KSXGitHub/deno-compose/:VERSION/index.js
-* GitHub Pages: https://ksxgithub.github.io/deno-compose/index.js
-* Deno Third-Party Modules: https://deno.land/x/compose@:VERSION/index.js
+* GitHub User Content: `https://raw.githubusercontent.com/KSXGitHub/deno-compose/:VERSION/index.js`
+* GitHub Pages: `https://ksxgithub.github.io/deno-compose/index.js`
+* Deno Third-Party Modules: `https://deno.land/x/compose@:VERSION/index.js`
 
 **Code Example:**
 
