@@ -8,6 +8,27 @@ This package not only provides simple `pipe`, `pipeline`, and `compose` implemen
 
 ## Usage
 
+### Import as module
+
+**URLs to import from:** _(replace `:VERSION` with suitable version, which are git tags)_
+
+* GitHub User Content: https://raw.githubusercontent.com/KSXGitHub/deno-compose/:VERSION/index.js
+* GitHub Pages: https://ksxgithub.github.io/deno-compose/index.js
+* Deno Third-Party Modules: https://deno.land/x/compose@:VERSION/index.js
+
+**Code Example:**
+
+```typescript
+import {
+  pipe,
+  pipeline,
+  compose,
+  pipeUnary,
+  pipelineUnary,
+  composeUnary,
+} from 'https://deno.land/x/compose@1.0.0/index.js'
+```
+
 ### APIs
 
 #### `pipe`
