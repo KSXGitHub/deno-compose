@@ -1,4 +1,4 @@
-/// <references types="./index.d.ts" />
+/// <reference types="./index.d.ts" />
 
 export const pipe = (x, ...fns) =>
   fns.reduce((x, fn) => fn(x), x)
