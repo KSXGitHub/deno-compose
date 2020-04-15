@@ -44,8 +44,7 @@ is equivalent to
 ```typescript
 const x1 = f1(x0)
 const x2 = f2(x1)
-const x3 = f3(x2)
-const y = f3(x3)
+const y = f3(x2)
 ```
 
 or
