@@ -1,0 +1,25 @@
+name: Test
+
+on:
+  - push
+  - pull_request
+
+jobs:
+  type_test:
+    name: Type Test
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - uses: denolib/setup-deno@v1.3.0
+        with:
+          deno-version: 1.0.0-rc3
+
+      - run: deno cache **/*.ts
+
+  code_style:
+    name: Code Style
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: KSXGitHub/github-actions-sane-fmt@0.2.22
