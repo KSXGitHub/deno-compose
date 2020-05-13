@@ -1,5 +1,5 @@
-import { resolve } from 'https://deno.land/std@v0.38.0/path/mod.ts'
-import { writeFileStr } from 'https://deno.land/std@v0.38.0/fs/mod.ts'
+import { resolve } from 'https://deno.land/std@v1.0.0-rc3/path/mod.ts'
+import { writeFileStr } from 'https://deno.land/std@v1.0.0-rc3/fs/mod.ts'
 import { dirname } from 'https://deno.land/x/dirname/mod.ts'
 
 import {
