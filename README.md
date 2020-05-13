@@ -132,6 +132,12 @@ const g2 = compose(f4, f3, f2, f1, f0)
 const y2 = g2(...args)
 ```
 
+## Development
+
+### Code Style
+
+This project is formatted according to [sane-fmt](https://github.com/KSXGitHub/sane-fmt/).
+
 ## License
 
 [MIT](https://git.io/JvNN2) © [Hoàng Văn Khải](https://github.com/KSXGitHub/)
