@@ -7,10 +7,10 @@ import {
   genPipeFunc,
   genComposeFunc,
   genPipeUnaryFunc,
-  genComposeUnaryFunc
+  genComposeUnaryFunc,
 } from './model.ts'
 
-export async function render () {
+export async function render() {
   const __dirname = dirname(import.meta)
   const filename = resolve(__dirname, '../index.d.ts')
 
@@ -26,7 +26,7 @@ export async function render () {
     genPipeUnaryFunc(quantity, 'pipelineUnary'),
     genComposeUnaryFunc(quantity, 'composeUnary'),
     'export { pipeline as composeRight }',
-    'export { pipelineUnary as composeUnaryRight }'
+    'export { pipelineUnary as composeUnaryRight }',
   ].join('\n\n')
 
   await writeFileStr(filename, content)

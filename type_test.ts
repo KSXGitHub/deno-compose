@@ -7,7 +7,7 @@ import {
   composeRight,
   pipelineUnary,
   composeUnary,
-  composeUnaryRight
+  composeUnaryRight,
 } from './index.js'
 
 assert<7>(pipe(
@@ -19,7 +19,7 @@ assert<7>(pipe(
   x => {
     assert<'x'>(x)
     return 7 as const
-  }
+  },
 ))
 
 assert<
@@ -33,7 +33,7 @@ assert<
   x => {
     assert<'x'>(x)
     return 'y' as const
-  }
+  },
 ))
 
 assert<
@@ -43,7 +43,7 @@ assert<
   (_: 'x2') => 'x3' as const,
   (_: 'x1') => 'x2' as const,
   (_: 'x0') => 'x1' as const,
-  (_0: 0, _1: 1, _2: 2) => 'x0' as const
+  (_0: 0, _1: 1, _2: 2) => 'x0' as const,
 ))
 
 assert<typeof composeRight>(pipeline)
@@ -60,7 +60,7 @@ assert<
   x => {
     assert<'x'>(x)
     return 'y' as const
-  }
+  },
 ))
 
 assert<
@@ -70,7 +70,7 @@ assert<
   (_: 'x3') => 'x4' as const,
   (_: 'x2') => 'x3' as const,
   (_: 'x1') => 'x2' as const,
-  (_: 'x0') => 'x1' as const
+  (_: 'x0') => 'x1' as const,
 ))
 
 assert<typeof composeUnaryRight>(pipelineUnary)

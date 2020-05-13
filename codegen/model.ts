@@ -1,13 +1,12 @@
-function typeParams (quantity: number) {
+function typeParams(quantity: number) {
   return Array
     .from({ length: quantity })
     .map((_, i) => '    T' + i)
     .join(',\n')
 }
 
-function pipeValParams (quantity: number) {
-  const sig = (arg: number, res: number) =>
-    `(x: T${arg}) => T${res}`
+function pipeValParams(quantity: number) {
+  const sig = (arg: number, res: number) => `(x: T${arg}) => T${res}`
 
   const params = Array
     .from({ length: quantity - 1 })
@@ -17,9 +16,8 @@ function pipeValParams (quantity: number) {
   return params
 }
 
-function composeValParams (quantity: number) {
-  const sig = (arg: number, res: number) =>
-    `(x: T${arg}) => T${res}`
+function composeValParams(quantity: number) {
+  const sig = (arg: number, res: number) => `(x: T${arg}) => T${res}`
 
   const begin = Array
     .from({ length: quantity - 1 })
@@ -31,9 +29,8 @@ function composeValParams (quantity: number) {
   return [begin, last].filter(Boolean).join(',\n')
 }
 
-function composeUnaryValParams (quantity: number) {
-  const sig = (arg: number, res: number) =>
-    `(x: T${arg}) => T${res}`
+function composeUnaryValParams(quantity: number) {
+  const sig = (arg: number, res: number) => `(x: T${arg}) => T${res}`
 
   return Array
     .from({ length: quantity - 1 })
@@ -41,19 +38,19 @@ function composeUnaryValParams (quantity: number) {
     .join(',\n')
 }
 
-function pipeRetVal (quantity: number) {
+function pipeRetVal(quantity: number) {
   return `T${quantity - 1}`
 }
 
-function pipeRetFunc (quantity: number) {
+function pipeRetFunc(quantity: number) {
   return `(...args: Args) => T${quantity - 1}`
 }
 
-function pipeRetUnaryFunc (quantity: number) {
+function pipeRetUnaryFunc(quantity: number) {
   return `(x: T0) => T${quantity - 1}`
 }
 
-function composeUnaryRetFunc (quantity: number) {
+function composeUnaryRetFunc(quantity: number) {
   return `(x: T${quantity - 1}) => T0`
 }
 
@@ -61,14 +58,15 @@ interface Gen {
   (quantity: number, name: string): string
 }
 
-function mkGen (fn: Gen): Gen {
-  return (quantity, name) => Array
-    .from({ length: quantity })
-    .map((_, i) => fn(i + 1, name))
-    .join('\n')
+function mkGen(fn: Gen): Gen {
+  return (quantity, name) =>
+    Array
+      .from({ length: quantity })
+      .map((_, i) => fn(i + 1, name))
+      .join('\n')
 }
 
-export function genPipeValOverload (quantity: number, name: string) {
+export function genPipeValOverload(quantity: number, name: string) {
   const types = typeParams(quantity)
   const values = pipeValParams(quantity)
   const rets = pipeRetVal(quantity)
@@ -78,13 +76,13 @@ export function genPipeValOverload (quantity: number, name: string) {
     '> (',
     '    x0: T0,',
     values,
-    `): ${rets};`
+    `): ${rets};`,
   ].join('\n')
 }
 
 export const genPipeVal = mkGen(genPipeValOverload)
 
-export function genPipeFuncOverload (quantity: number, name: string) {
+export function genPipeFuncOverload(quantity: number, name: string) {
   const types = typeParams(quantity)
   const values = pipeValParams(quantity)
   const rets = pipeRetFunc(quantity)
@@ -95,13 +93,13 @@ export function genPipeFuncOverload (quantity: number, name: string) {
     '> (',
     '    f0: (...args: Args) => T0,',
     values,
-    `): ${rets};`
+    `): ${rets};`,
   ].join('\n')
 }
 
 export const genPipeFunc = mkGen(genPipeFuncOverload)
 
-export function genComposeFuncOverload (quantity: number, name: string) {
+export function genComposeFuncOverload(quantity: number, name: string) {
   const types = typeParams(quantity)
   const values = composeValParams(quantity)
   return [
@@ -110,13 +108,13 @@ export function genComposeFuncOverload (quantity: number, name: string) {
     '    Args extends any[]',
     '> (',
     values,
-    '): (...args: Args) => T0;'
+    '): (...args: Args) => T0;',
   ].join('\n')
 }
 
 export const genComposeFunc = mkGen(genComposeFuncOverload)
 
-export function genPipeUnaryFuncOverload (quantity: number, name: string) {
+export function genPipeUnaryFuncOverload(quantity: number, name: string) {
   const types = typeParams(quantity + 1)
   const values = pipeValParams(quantity + 1)
   const rets = pipeRetUnaryFunc(quantity + 1)
@@ -125,13 +123,13 @@ export function genPipeUnaryFuncOverload (quantity: number, name: string) {
     types,
     '> (',
     values,
-    `): ${rets};`
+    `): ${rets};`,
   ].join('\n')
 }
 
 export const genPipeUnaryFunc = mkGen(genPipeUnaryFuncOverload)
 
-export function genComposeUnaryFuncOverload (quantity: number, name: string) {
+export function genComposeUnaryFuncOverload(quantity: number, name: string) {
   const types = typeParams(quantity + 1)
   const values = composeUnaryValParams(quantity + 1)
   const rets = composeUnaryRetFunc(quantity + 1)
@@ -140,7 +138,7 @@ export function genComposeUnaryFuncOverload (quantity: number, name: string) {
     types + ',',
     '> (',
     values,
-    `): ${rets};`
+    `): ${rets};`,
   ].join('\n')
 }
 
