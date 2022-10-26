@@ -22,4 +22,4 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - uses: KSXGitHub/github-actions-sane-fmt@0.2.22
+      - uses: sane-fmt/action@0.16.1
