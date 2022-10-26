@@ -1,6 +1,5 @@
-import { resolve } from 'https://deno.land/std@v1.0.0-rc3/path/mod.ts'
-import { writeFileStr } from 'https://deno.land/std@v1.0.0-rc3/fs/mod.ts'
-import { dirname } from 'https://deno.land/x/dirname/mod.ts'
+import { resolve } from 'https://deno.land/std@0.160.0/path/mod.ts'
+import dirname from 'https://deno.land/x/dirname@1.1.2/mod.ts'
 
 import {
   genPipeVal,
@@ -11,7 +10,7 @@ import {
 } from './model.ts'
 
 export async function render() {
-  const __dirname = dirname(import.meta)
+  const { __dirname } = dirname(import.meta)
   const filename = resolve(__dirname, '../index.d.ts')
 
   // WARNING:
@@ -29,7 +28,7 @@ export async function render() {
     'export { pipelineUnary as composeUnaryRight }',
   ].join('\n\n')
 
-  await writeFileStr(filename, content)
+  await Deno.writeTextFile(filename, content)
 
   return 0
 }
