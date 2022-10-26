@@ -13,7 +13,7 @@ jobs:
 
       - uses: denoland/setup-deno@v1.1.1
         with:
-          deno-version: 1.0.0-rc3
+          deno-version: 1.26.2
 
       - run: deno cache --unstable **/*.ts
 
