@@ -1,6 +1,5 @@
 import { resolve } from 'https://deno.land/std@0.160.0/path/mod.ts'
 import dirname from 'https://deno.land/x/dirname@1.1.2/mod.ts'
-
 import { genPipeVal, genPipeFunc, genComposeFunc, genPipeUnaryFunc, genComposeUnaryFunc } from './model.ts'
 
 export async function render() {
