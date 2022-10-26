@@ -58,7 +58,7 @@ const y = f3(f2(f1(x0)))
 **Signature:** `pipeline (...functions) → function`
 
 ```typescript
-const fn = pipe(f0, f1, f2, f3)
+const fn = pipeline(f0, f1, f2, f3)
 ```
 
 is equivalent to
